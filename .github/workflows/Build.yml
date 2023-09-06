@@ -19,7 +19,7 @@ jobs:
       run: cargo build --release --verbose
       
     - name: Tar Artefact
-      run: tar -cvf server.tar /target/release
+      run: tar -cvf server.tar ./target/release
       
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
