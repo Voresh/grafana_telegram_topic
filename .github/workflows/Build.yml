@@ -13,16 +13,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+
+    - name: Install rust
+      uses: dtolnay/rust-toolchain@stable
     
     - name: Build
       run: cargo build --release --verbose
       
     - name: Tar Artefact
-      run: tar -cvf server.tar ./target/release
+      run: tar -czvf server.tar.gz ./target/release
       
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: server
-        path: server.tar
+        path: server.tar.gz
